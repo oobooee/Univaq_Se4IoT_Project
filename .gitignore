@@ -1,0 +1,4 @@
+nodered/nodered_data/.npm/
+nodered/nodered_data/node_modules
+rabbitmq/data/.erlang.cookie
+

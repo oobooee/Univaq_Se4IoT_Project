@@ -1,0 +1,1434 @@
+[
+    {
+        "id": "0da6c25664b14e71",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7bc1cc212690dc94",
+        "type": "mqtt-broker",
+        "name": "my_se4iot_pr_mosquitto",
+        "broker": "host.docker.internal",
+        "port": "1883",
+        "tls": "",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "756f178351bb4d01",
+        "type": "MySQLdatabase",
+        "name": "Mysql_conn.",
+        "host": "mysql",
+        "port": "3306",
+        "db": "HYDRO_DAM",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "747aace6a73f0676",
+        "type": "ui_tab",
+        "name": "DAM_Dash",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "f295f5c49aaea73d",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#0d7354",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#0d7354",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0d7354",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#15b886",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0d7354",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "e5de0ef0f8413da5",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "my_se4iot_pr_influxdb",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://my_se4iot_pr_influxdb:8086",
+        "timeout": "60",
+        "rejectUnauthorized": false
+    },
+    {
+        "id": "74d91d705f380282",
+        "type": "ui_group",
+        "name": "Power_DAM",
+        "tab": "747aace6a73f0676",
+        "order": 2,
+        "disp": true,
+        "width": "9",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "7d8558737b782d5e",
+        "type": "ui_group",
+        "name": "Flows_DAM",
+        "tab": "747aace6a73f0676",
+        "order": 3,
+        "disp": true,
+        "width": "9",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "8dd45f5ea902aaee",
+        "type": "amqp-broker",
+        "name": "my_se4iot_pr_rabbitmq",
+        "host": "my_se4iot_pr_rabbitmq",
+        "port": "5672",
+        "vhost": "",
+        "tls": false,
+        "credsFromSettings": false
+    },
+    {
+        "id": "e38ada7c23eea3a7",
+        "type": "global-config",
+        "name": "global-config",
+        "env": [
+            {
+                "name": "ADDRESS",
+                "value": "${EMAIL_TO}",
+                "type": "env"
+            }
+        ]
+    },
+    {
+        "id": "f0eec3f4d12fbf90",
+        "type": "ui_group",
+        "name": "TurbinParameters",
+        "tab": "747aace6a73f0676",
+        "order": 4,
+        "disp": true,
+        "width": "4",
+        "collapse": true,
+        "disabled": false,
+        "hidden": false,
+        "className": ""
+    },
+    {
+        "id": "904b6971a5606013",
+        "type": "ui_group",
+        "name": "Status",
+        "tab": "747aace6a73f0676",
+        "order": 5,
+        "disp": false,
+        "width": "2",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "32d262651318ee49",
+        "type": "ui_group",
+        "name": "HydroDam",
+        "tab": "747aace6a73f0676",
+        "order": 1,
+        "disp": true,
+        "width": "9",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "ffe1b406c08bba22",
+        "type": "mqtt-dynamic-broker",
+        "broker": "host.docker.internal",
+        "port": 1883,
+        "clientid": "Test"
+    },
+    {
+        "id": "35c45bde461d78a5",
+        "type": "mysql",
+        "z": "0da6c25664b14e71",
+        "mydb": "756f178351bb4d01",
+        "name": "to db",
+        "x": 1630,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a888e34491a12b52",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "Insert",
+        "func": "\n// Preparazione della query SQL per inserire i dati nel database\nvar values = msg.payload;\nmsg.topic = `\n  INSERT INTO hydro_data (SensorId, LakeDepth, LakeVol, TotalEnergy)\n  VALUES (\n   '${values.SensorId}',\n    ${values.LakeDepth},\n    ${values.LakeVol},\n    ${values.TotalEnergy}\n  )\n`;\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1490,
+        "y": 420,
+        "wires": [
+            [
+                "35c45bde461d78a5"
+            ]
+        ]
+    },
+    {
+        "id": "82e50a9eafd55835",
+        "type": "debug",
+        "z": "0da6c25664b14e71",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "status.text",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 250,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "9e8cb0ad7f60ab6b",
+        "type": "delay",
+        "z": "0da6c25664b14e71",
+        "name": "Record hourly summary data",
+        "pauseType": "rate",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1290,
+        "y": 420,
+        "wires": [
+            [
+                "a888e34491a12b52"
+            ]
+        ]
+    },
+    {
+        "id": "6502f64f16d96689",
+        "type": "switch",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "property": "status.text",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "node-red:common.status.connected",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "e8f8f9f235de0ae3"
+            ],
+            [
+                "270cf82bfde91818"
+            ]
+        ]
+    },
+    {
+        "id": "79702222080c946f",
+        "type": "status",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "scope": [
+            "0a12d0e54c7501ed"
+        ],
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "82e50a9eafd55835",
+                "6502f64f16d96689"
+            ]
+        ]
+    },
+    {
+        "id": "270cf82bfde91818",
+        "type": "delay",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 560,
+        "y": 160,
+        "wires": [
+            [
+                "30c95a2630648a3a"
+            ]
+        ]
+    },
+    {
+        "id": "30c95a2630648a3a",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "Format alert message",
+        "func": "\nlet now = new Date();\nlet timestamp = now.toLocaleString(\"it-IT\", {\n    day: \"2-digit\",\n    month: \"2-digit\",\n    year: \"numeric\",\n    hour: \"2-digit\",\n    minute: \"2-digit\",\n    second: \"2-digit\"\n});\n\n\nmsg.payload = `ATTENZIONE: Il nodo MQTT è disconnesso. Verifica immediatamente la connessione! \\nData e ora: ${timestamp}`;\nmsg.topic = \"Allerta: Disconnessione MQTT\";\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 160,
+        "wires": [
+            [
+                "1ec0166b0548e340"
+            ]
+        ]
+    },
+    {
+        "id": "27cb24dfede6d624",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "Format operat. message",
+        "func": "\nlet now = new Date();\nlet timestamp = now.toLocaleString(\"it-IT\", {\n    day: \"2-digit\",\n    month: \"2-digit\",\n    year: \"numeric\",\n    hour: \"2-digit\",\n    minute: \"2-digit\",\n    second: \"2-digit\"\n});\n\n\nmsg.payload = `Il nodo MQTT e' connesso. \\nData e ora: ${timestamp}`;\nmsg.topic = \"Nuova connessione MQTT\";\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 120,
+        "wires": [
+            [
+                "1ec0166b0548e340"
+            ]
+        ]
+    },
+    {
+        "id": "e8f8f9f235de0ae3",
+        "type": "delay",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 560,
+        "y": 120,
+        "wires": [
+            [
+                "27cb24dfede6d624"
+            ]
+        ]
+    },
+    {
+        "id": "d4f29e4acbcebb4a",
+        "type": "switch",
+        "z": "0da6c25664b14e71",
+        "name": "UI SWITCH",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "^.*?/.*?/Summary$",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "regex",
+                "v": "^.*?/.*?/LakeDepth$",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "regex",
+                "v": "^.*?/.*?/LakeVolume$",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "regex",
+                "v": "^.*?/.*?/Water_IN$",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "regex",
+                "v": "^.*?/.*?/Water_OUT$",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "regex",
+                "v": "^.*?/.*?/InstantPower$",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "regex",
+                "v": "^.*?/.*?/TotalEnergy$",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "regex",
+                "v": "^.*?/.*?/EnergyRequest$",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "regex",
+                "v": "^.*?/.*?/Status$",
+                "vt": "str",
+                "case": false
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 9,
+        "x": 950,
+        "y": 560,
+        "wires": [
+            [
+                "9e8cb0ad7f60ab6b",
+                "dbb5ae4d245ef017"
+            ],
+            [
+                "9ab3516393f37029"
+            ],
+            [
+                "1d0212952e4d94c7"
+            ],
+            [
+                "3101ccfd5c7ae846"
+            ],
+            [
+                "987d852dbb38596c"
+            ],
+            [
+                "bae9287ade960bbf"
+            ],
+            [
+                "13360450b4f2d763"
+            ],
+            [
+                "b2464b9d9ca98853"
+            ],
+            [
+                "c497dde887adccc2",
+                "4f7ade9bda7efa0b",
+                "3981ec9e62ef0213",
+                "190729d85a3d1974"
+            ]
+        ]
+    },
+    {
+        "id": "9076d5a359f10ec5",
+        "type": "ui_gauge",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "group": "7d8558737b782d5e",
+        "order": 1,
+        "width": "9",
+        "height": "7",
+        "gtype": "donut",
+        "title": "Water_IN",
+        "label": "m³/s",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "0",
+        "colors": [
+            "#008000",
+            "#ffff00",
+            "#ff0000"
+        ],
+        "seg1": "0",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1520,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "a39ef3add94853bd",
+        "type": "ui_gauge",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "group": "7d8558737b782d5e",
+        "order": 1,
+        "width": "9",
+        "height": "7",
+        "gtype": "donut",
+        "title": "Water_OUT",
+        "label": "m³/s",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "0",
+        "colors": [
+            "#008000",
+            "#ffff00",
+            "#ff0000"
+        ],
+        "seg1": "0",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1530,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "d2f52110ce11c450",
+        "type": "ui_gauge",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "group": "74d91d705f380282",
+        "order": 5,
+        "width": "0",
+        "height": "0",
+        "gtype": "gage",
+        "title": "InstantPower",
+        "label": "MWatt",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1540,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "9ab3516393f37029",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "set bounds",
+        "func": "const lakeDepthMin = flow.get(\"lakeDepthMin\");\nconst lakeDepthMax = flow.get(\"lakeDepthMax\");\n\nmsg.ui_control = { min: lakeDepthMin, max: lakeDepthMax };\nmsg.payload = msg.payload; \nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 560,
+        "wires": [
+            [
+                "a4d0e5d7560fc703",
+                "24751ff40a0af25f"
+            ]
+        ]
+    },
+    {
+        "id": "dbb5ae4d245ef017",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "Dam Tech Specs",
+        "func": "const lakeDepthMin = msg.payload.LakeDepthMin;\nconst lakeDepthMax = msg.payload.LakeDepthMax;\nconst lakeVolumeMin = msg.payload.LakeVolMin;\nconst lakeVolumeMax = msg.payload.LakeVolMax;\nconst waterInMin = msg.payload.Water_IN_Min;\nconst waterInMax = msg.payload.Water_IN_Max;\nconst waterOutMin = msg.payload.Water_OUT_Min;\nconst waterOutMax = msg.payload.Water_OUT_Max;\nconst instantPowerMin = msg.payload.InstantPowerMin;\nconst instantPowerMax = msg.payload.InstantPowerMax;\nconst energyRequestMin = msg.payload.EnergyRequestMin;\nconst energyRequestMax = msg.payload.EnergyRequestMax;\n\n// Memorizza i valori nel contesto di flusso\nflow.set(\"lakeDepthMin\", lakeDepthMin);\nflow.set(\"lakeDepthMax\", lakeDepthMax);\nflow.set(\"lakeVolumeMin\", lakeVolumeMin);\nflow.set(\"lakeVolumeMax\", lakeVolumeMax);\nflow.set(\"waterInMin\", waterInMin);\nflow.set(\"waterInMax\", waterInMax);\nflow.set(\"waterOutMin\", waterOutMin);\nflow.set(\"waterOutMax\", waterOutMax);\nflow.set(\"instantPowerMin\", instantPowerMin);\nflow.set(\"instantPowerMax\", instantPowerMax);\nflow.set(\"energyRequestMin\", energyRequestMin);\nflow.set(\"energyRequestMax\", energyRequestMax);\n\n// Debug per verificare che i valori siano stati memorizzati\nmsg.debug = {\n    lakeDepth: { min: lakeDepthMin, max: lakeDepthMax },\n    lakeVolume: { min: lakeVolumeMin, max: lakeVolumeMax },\n    waterIn: { min: waterInMin, max: waterInMax },\n    waterOut: { min: waterOutMin, max: waterOutMax },\n    instantPower: { min: instantPowerMin, max: instantPowerMax },\n    energyRequest: { min: energyRequestMin, max: energyRequestMax }\n};\n\n\nreturn msg; // Restituisce il messaggio per debug",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1310,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d0212952e4d94c7",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "set bounds",
+        "func": "// Leggi i valori dal contesto di flusso\nconst lakeVolumeMin = flow.get(\"lakeVolumeMin\");\nconst lakeVolumeMax = flow.get(\"lakeVolumeMax\");\n\n// Funzione per approssimare i valori\nfunction approximateValue(value) {\n    if (value >= 1e6) {\n        return Math.round(value / 1e6) // Arrotonda ai milioni\n    } else if (value >= 1e3) {\n        return Math.round(value / 1e3) // Arrotonda alle migliaia\n    } else {\n        return Math.round(value * 100) / 100; // Arrotonda a due decimali\n    }\n}\n\n// Approssima i valori letti e il valore corrente del payload\nconst lakeVolumeMinApprox = approximateValue(lakeVolumeMin);\nconst lakeVolumeMaxApprox = approximateValue(lakeVolumeMax);\nconst payloadApprox = approximateValue(msg.payload); // Approssima il valore corrente\n\n// Configura i limiti e il valore nel messaggio per il gauge\nmsg.ui_control = { \n    min: lakeVolumeMinApprox, \n    max: lakeVolumeMaxApprox \n};\nmsg.payload = payloadApprox; // Imposta il valore approssimato nel payload\n\n// Debug per verificare i valori approssimati\nmsg.debug = {\n    original: { \n        min: lakeVolumeMin, \n        max: lakeVolumeMax, \n        payload: msg.payload \n    },\n    approximated: { \n        min: lakeVolumeMinApprox, \n        max: lakeVolumeMaxApprox, \n        payload: payloadApprox \n    }\n};\n\nreturn msg; // Restituisce il messaggio con i valori approssimati\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1370,
+        "y": 600,
+        "wires": [
+            [
+                "a4a2377dd1c8a21b"
+            ]
+        ]
+    },
+    {
+        "id": "3101ccfd5c7ae846",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "set bounds",
+        "func": "const waterInMin = flow.get(\"waterInMin\");\nconst waterInMax = flow.get(\"waterInMax\");\n\nmsg.ui_control = { min: waterInMin, max: waterInMax };\nmsg.payload = msg.payload;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 640,
+        "wires": [
+            [
+                "9076d5a359f10ec5"
+            ]
+        ]
+    },
+    {
+        "id": "987d852dbb38596c",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "set bounds",
+        "func": "const waterOutMin = flow.get(\"waterOutMin\");\nconst waterOutMax = flow.get(\"waterOutMax\");\n\nmsg.ui_control = { min: waterOutMin, max: waterOutMax };\nmsg.payload = msg.payload;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 680,
+        "wires": [
+            [
+                "a39ef3add94853bd"
+            ]
+        ]
+    },
+    {
+        "id": "bae9287ade960bbf",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "set bounds",
+        "func": "const instantPowerMin = flow.get(\"instantPowerMin\");\nconst instantPowerMax = flow.get(\"instantPowerMax\");\n\nmsg.ui_control = { min: instantPowerMin, max: instantPowerMax };\nmsg.payload = msg.payload;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 720,
+        "wires": [
+            [
+                "d2f52110ce11c450"
+            ]
+        ]
+    },
+    {
+        "id": "a4d0e5d7560fc703",
+        "type": "ui_gauge",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "group": "32d262651318ee49",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "gtype": "wave",
+        "title": "LakeDepth",
+        "label": " mt",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "0",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "0",
+        "seg2": "95000000",
+        "diff": false,
+        "className": "",
+        "x": 1530,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "a4a2377dd1c8a21b",
+        "type": "ui_gauge",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "group": "32d262651318ee49",
+        "order": 5,
+        "width": "0",
+        "height": "0",
+        "gtype": "wave",
+        "title": "LakeVolume",
+        "label": "   Mm³",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "0",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1530,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "b2464b9d9ca98853",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "set bounds",
+        "func": "const energyRequestMin = flow.get(\"energyRequestMin\");\nconst energyRequestMax = flow.get(\"energyRequestMax\");\n\nmsg.ui_control = { min: energyRequestMin, max: energyRequestMax };\nmsg.payload = msg.payload;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 800,
+        "wires": [
+            [
+                "f90e198108869bfd"
+            ]
+        ]
+    },
+    {
+        "id": "f90e198108869bfd",
+        "type": "ui_gauge",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "group": "74d91d705f380282",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "EnergyRequest",
+        "label": "MW",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1540,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "9505f816aa64eaf8",
+        "type": "ui_text",
+        "z": "0da6c25664b14e71",
+        "group": "74d91d705f380282",
+        "order": 2,
+        "width": "9",
+        "height": "2",
+        "name": "",
+        "label": "TotalEnergy",
+        "format": "{{msg.payload}} MWh",
+        "layout": "col-center",
+        "className": "",
+        "style": true,
+        "font": "",
+        "fontSize": "27",
+        "color": "#ffffff",
+        "x": 1530,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "13360450b4f2d763",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "set bounds",
+        "func": "msg.payload = msg.payload;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 760,
+        "wires": [
+            [
+                "9505f816aa64eaf8"
+            ]
+        ]
+    },
+    {
+        "id": "442a20632cf7ab03",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "Select",
+        "func": "msg.topic = `\n  SELECT * FROM hydro_data\n  ORDER BY timestamp DESC\n  LIMIT 24\n`;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 980,
+        "wires": [
+            [
+                "ce899ab716c15230"
+            ]
+        ]
+    },
+    {
+        "id": "95b5b329c67a4b09",
+        "type": "inject",
+        "z": "0da6c25664b14e71",
+        "name": "E-mail report @12:00 every day",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 12 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 980,
+        "wires": [
+            [
+                "442a20632cf7ab03"
+            ]
+        ]
+    },
+    {
+        "id": "ce899ab716c15230",
+        "type": "mysql",
+        "z": "0da6c25664b14e71",
+        "mydb": "756f178351bb4d01",
+        "name": "from db",
+        "x": 580,
+        "y": 980,
+        "wires": [
+            [
+                "3b889b60af394418"
+            ]
+        ]
+    },
+    {
+        "id": "3b889b60af394418",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "Manage payload",
+        "func": "let results = msg.payload; // I risultati della query SQL\n\n// Costruisce il testo dell'email\nlet emailText = \"Report Dati Idroelettrici:\\n\\n\";\nresults.forEach((row) => {\n    emailText += `SensorId: ${row.SensorId}, LakeDepth: ${row.LakeDepth}, LakeVol: ${row.LakeVol}, TotalEnergy: ${row.TotalEnergy}\\n`;\n});\n\n// Imposta il testo dell'email come payload per il nodo email\nmsg.payload = emailText;\nmsg.topic = \"Report giornaliero dei dati idroelettrici\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 980,
+        "wires": [
+            [
+                "9b334761ba3bf5bf"
+            ]
+        ]
+    },
+    {
+        "id": "4f7ade9bda7efa0b",
+        "type": "ui_gauge",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "group": "f0eec3f4d12fbf90",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Volt",
+        "label": "",
+        "format": "{{msg.payload.Voltage}} kV",
+        "min": 0,
+        "max": "25",
+        "colors": [
+            "#ff0000",
+            "#e6e600",
+            "#008000"
+        ],
+        "seg1": "17",
+        "seg2": "20",
+        "diff": false,
+        "className": "",
+        "x": 1340,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "c497dde887adccc2",
+        "type": "ui_gauge",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "group": "f0eec3f4d12fbf90",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Ampere",
+        "label": "",
+        "format": "{{msg.payload.Ampere}} kA",
+        "min": 0,
+        "max": "10",
+        "colors": [
+            "#ff0000",
+            "#e6e600",
+            "#008000"
+        ],
+        "seg1": "3",
+        "seg2": "5",
+        "diff": false,
+        "className": "",
+        "x": 1350,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "3981ec9e62ef0213",
+        "type": "ui_gauge",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "group": "f0eec3f4d12fbf90",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Power",
+        "label": "",
+        "format": "{{msg.payload.Power}} W",
+        "min": 0,
+        "max": "15000",
+        "colors": [
+            "#d8fed8",
+            "#0bdb25",
+            "#008000"
+        ],
+        "seg1": "5000",
+        "seg2": "10000",
+        "diff": false,
+        "className": "",
+        "x": 1350,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "24751ff40a0af25f",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "set thresholds ",
+        "func": "const lakeDepthMin = flow.get(\"lakeDepthMin\");\nconst lakeDepthMax = flow.get(\"lakeDepthMax\");\n\n\nconst currentValue = msg.payload;\n\n// Calcola il 95% del valore massimo\nconst threshold = lakeDepthMax * 0.95;\n\n// Controlla se il valore attuale supera la soglia\nif (currentValue >= threshold) {\n    msg.payload = false; // Messaggio di allerta\n} else {\n    msg.payload = true; // Messaggio normale\n}\n\n// Configura il controllo del gauge UI\nmsg.ui_control = { min: lakeDepthMin, max: lakeDepthMax };\n\n// Ritorna il messaggio modificato\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1370,
+        "y": 520,
+        "wires": [
+            [
+                "db8f4c035e0cfcaf"
+            ]
+        ]
+    },
+    {
+        "id": "db8f4c035e0cfcaf",
+        "type": "ui_led",
+        "z": "0da6c25664b14e71",
+        "order": 5,
+        "group": "904b6971a5606013",
+        "width": "2",
+        "height": "2",
+        "label": "",
+        "labelPlacement": "right",
+        "labelAlignment": "center",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 1530,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "190729d85a3d1974",
+        "type": "ui_gauge",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "group": "f0eec3f4d12fbf90",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Efficiency",
+        "label": "",
+        "format": "{{msg.payload.EFFICIENCY}} %",
+        "min": 0,
+        "max": "0.99",
+        "colors": [
+            "#ff0000",
+            "#e6e600",
+            "#008000"
+        ],
+        "seg1": "0.60",
+        "seg2": "0.90",
+        "diff": false,
+        "className": "",
+        "x": 1350,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "f603a5fe10596793",
+        "type": "amqp-in",
+        "z": "0da6c25664b14e71",
+        "name": "Hydro_dam_Rome_TurbinData",
+        "broker": "8dd45f5ea902aaee",
+        "prefetch": 0,
+        "noAck": false,
+        "exchangeName": "",
+        "exchangeType": "direct",
+        "exchangeRoutingKey": "",
+        "exchangeDurable": false,
+        "queueName": "Hydro_dam_Rome_Turbin_Key",
+        "queueExclusive": false,
+        "queueDurable": true,
+        "queueAutoDelete": false,
+        "headers": "{}",
+        "x": 180,
+        "y": 320,
+        "wires": [
+            [
+                "18544481fd42ca9a"
+            ]
+        ]
+    },
+    {
+        "id": "18544481fd42ca9a",
+        "type": "influxdb out",
+        "z": "0da6c25664b14e71",
+        "influxdb": "e5de0ef0f8413da5",
+        "name": "TurbinStateData",
+        "measurement": "HydroDam/Hydro_dam_Rome/TurbinStateData",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "my_se4iot_project",
+        "bucket": "my_se4iot_project_bucket",
+        "x": 490,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "ad2ea3fb29022b91",
+        "type": "influxdb out",
+        "z": "0da6c25664b14e71",
+        "influxdb": "e5de0ef0f8413da5",
+        "name": "HydroDamData",
+        "measurement": "HydroDam/Hydro_dam_Rome/HydroDamData",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "my_se4iot_project",
+        "bucket": "my_se4iot_project_bucket",
+        "x": 820,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "e83125ed764ae7b1",
+        "type": "influxdb out",
+        "z": "0da6c25664b14e71",
+        "influxdb": "e5de0ef0f8413da5",
+        "name": "TurbinStateData",
+        "measurement": "HydroDam/Hydro_dam_Rome/TurbinStateData",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "my_se4iot_project",
+        "bucket": "my_se4iot_project_bucket",
+        "x": 810,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "0a12d0e54c7501ed",
+        "type": "mqtt-dynamic in",
+        "z": "0da6c25664b14e71",
+        "name": "${damFolder}/${clientId}/+",
+        "broker": "ffe1b406c08bba22",
+        "x": 440,
+        "y": 580,
+        "wires": [
+            [
+                "8e20336d4d36c01c"
+            ]
+        ]
+    },
+    {
+        "id": "37526b2e4992b256",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "get env variables",
+        "func": "const damFolder = env.get(\"DAM_FOLDER\");  \nconst clientId = env.get(\"CLIENT_ID\");    \n\n\n\nflow.set(\"damFolder\", damFolder);\nflow.set(\"clientId\", clientId);\n\nconst exchange = `${damFolder}_Exchange`;\nconst queue = `${clientId}_Turbin_data`;\nconst binding_key = `${clientId}_Turbin_key`;\n\nflow.set(\"exchange\", exchange);\nflow.set(\"queue\", queue);\nflow.set(\"binding_key\", binding_key);\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 210,
+        "y": 520,
+        "wires": [
+            [
+                "0a12d0e54c7501ed",
+                "659be2b23f363b2f"
+            ]
+        ]
+    },
+    {
+        "id": "674ecbf3b95cf198",
+        "type": "inject",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "4",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "37526b2e4992b256"
+            ]
+        ]
+    },
+    {
+        "id": "8e20336d4d36c01c",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "parse string values",
+        "func": "// Recupera i valori dinamici dal contesto di flusso\nconst damFolder = flow.get(\"damFolder\");\nconst clientId = flow.get(\"clientId\");\n\n// Costruisce dinamicamente il prefisso base per il topic\nconst baseTopic = `${damFolder}/${clientId}`;\n\n// Espressioni regolari per matching dinamico\nconst regexSummary = new RegExp(`^${baseTopic}/Summary$`);\nconst regexStatus = new RegExp(`^${baseTopic}/Status$`);\nconst regexSingleValues = new RegExp(`^${baseTopic}/(LakeDepth|LakeVolume|Water_IN|Water_OUT|InstantPower|TotalEnergy|EnergyRequest)$`);\n\n// Controlla il topic per determinare la logica di elaborazione\n\n// ---- Valori singoli ----\nif (regexSingleValues.test(msg.topic)) {\n    // Converte il valore stringa in float\n    msg.payload = parseFloat(msg.payload);\n}\n// ---- Oggetto Status ----\nelse if (regexStatus.test(msg.topic)) {\n    // Prova a convertire in JSON e gestisce i campi numerici\n    msg.payload = JSON.parse(msg.payload);\n    msg.payload.EFFICIENCY = parseFloat(msg.payload.EFFICIENCY);\n    msg.payload.Voltage = parseFloat(msg.payload.Voltage);\n    msg.payload.Ampere = parseFloat(msg.payload.Ampere);\n    msg.payload.Power = parseFloat(msg.payload.Power);\n}\n// ---- Oggetto Summary ----\nelse if (regexSummary.test(msg.topic)) {\n    // Prova a convertire in JSON e gestisce i campi numerici\n    msg.payload = JSON.parse(msg.payload);\n    msg.payload.LakeDepth = parseFloat(msg.payload.LakeDepth);\n    msg.payload.LakeVol = parseFloat(msg.payload.LakeVol);\n    msg.payload.Water_IN = parseFloat(msg.payload.Water_IN);\n    msg.payload.Water_OUT = parseFloat(msg.payload.Water_OUT);\n    msg.payload.InstantPower = parseFloat(msg.payload.InstantPower);\n    msg.payload.TotalEnergy = parseFloat(msg.payload.TotalEnergy);\n    msg.payload.EnergyRequest = parseFloat(msg.payload.EnergyRequest);\n    msg.payload.LakeDepthMin = parseFloat(msg.payload.LakeDepthMin);\n    msg.payload.LakeDepthMax = parseFloat(msg.payload.LakeDepthMax);\n    msg.payload.LakeVolMin = parseFloat(msg.payload.LakeVolMin);\n    msg.payload.LakeVolMax = parseFloat(msg.payload.LakeVolMax);\n    msg.payload.Water_IN_Min = parseFloat(msg.payload.Water_IN_Min);\n    msg.payload.Water_IN_Max = parseFloat(msg.payload.Water_IN_Max);\n    msg.payload.Water_OUT_Min = parseFloat(msg.payload.Water_OUT_Min);\n    msg.payload.Water_OUT_Max = parseFloat(msg.payload.Water_OUT_Max);\n    msg.payload.InstantPowerMin = parseFloat(msg.payload.InstantPowerMin);\n    msg.payload.InstantPowerMax = parseFloat(msg.payload.InstantPowerMax);\n    msg.payload.EnergyRequestMin = parseFloat(msg.payload.EnergyRequestMin);\n    msg.payload.EnergyRequestMax = parseFloat(msg.payload.EnergyRequestMax);\n}\n// ---- Caso predefinito ----\nelse {\n    // Se il topic non è riconosciuto, scarta il messaggio\n    return null;\n}\n\n// Restituisce il messaggio elaborato\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 580,
+        "wires": [
+            [
+                "d4f29e4acbcebb4a",
+                "63df1107f10219dc",
+                "6cd66499f6dd12e2"
+            ]
+        ]
+    },
+    {
+        "id": "63df1107f10219dc",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "select turbin data",
+        "func": "\nconst damFolder = flow.get(\"damFolder\");\nconst clientId = flow.get(\"clientId\");\n\n// Costruisce il topic atteso\nconst statusTopic = `${damFolder}/${clientId}/Status`;\n\n// Controlla il topic\nif (msg.topic === statusTopic) {\n    return msg; // Lascia il messaggio invariato\n} else {\n    return null; // Scarta i messaggi non rilevanti\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 380,
+        "wires": [
+            [
+                "e83125ed764ae7b1"
+            ]
+        ]
+    },
+    {
+        "id": "6cd66499f6dd12e2",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "select dam data",
+        "func": "\nconst damFolder = flow.get(\"damFolder\");\nconst clientId = flow.get(\"clientId\");\n\n// Costruisce il topic atteso\nconst statusTopic = `${damFolder}/${clientId}/Summary`;\n\n// Controlla il topic\nif (msg.topic === statusTopic) {\n    return msg; // Lascia il messaggio invariato\n} else {\n    return null; // Scarta i messaggi non rilevanti\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 420,
+        "wires": [
+            [
+                "ad2ea3fb29022b91"
+            ]
+        ]
+    },
+    {
+        "id": "659be2b23f363b2f",
+        "type": "debug",
+        "z": "0da6c25664b14e71",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "0642b99f96c1598f",
+        "type": "email-dynamic",
+        "z": "0da6c25664b14e71",
+        "name": "email out",
+        "smtpServer": "",
+        "smtpPort": "",
+        "smtpUser": "",
+        "smtpPass": "",
+        "secure": true,
+        "tlsRejectUnauthorized": false,
+        "x": 1140,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1ec0166b0548e340",
+        "type": "function",
+        "z": "0da6c25664b14e71",
+        "name": "function 1",
+        "func": "const smtp_host = env.get(\"SMTP_HOST\");\nconst smtp_port = env.get(\"SMTP_PORT\");\nconst smtp_user = env.get(\"SMTP_USER\");\nconst smtp_password = env.get(\"SMTP_PASSWORD\");\nconst email_from = env.get(\"EMAIL_FROM\");\nconst email_to = env.get(\"EMAIL_TO\");\n\nflow.set(\"smtp_host\", smtp_host);\nflow.set(\"smtp_port\", smtp_port);\nflow.set(\"smtp_user\", smtp_user);\nflow.set(\"smtp_password\", smtp_password);\nflow.set(\"email_from\", email_from);\nflow.set(\"email_to\", email_to);\n\n\nmsg.smtp = {\n    host: smtp_host,\n    port: smtp_port,\n    auth: {\n        user: smtp_user,\n        pass: smtp_password\n    }\n};\n\nmsg.payload = {\n    from: email_from,                 \n    to: email_to,                     \n    subject: \"Test Email\",            \n    body: \"Questa è una email di test inviata dinamicamente da Node-RED.\" // Corpo dell'email\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 140,
+        "wires": [
+            [
+                "0642b99f96c1598f"
+            ]
+        ]
+    },
+    {
+        "id": "9b334761ba3bf5bf",
+        "type": "email-dynamic",
+        "z": "0da6c25664b14e71",
+        "name": "",
+        "smtpServer": "",
+        "smtpPort": "587",
+        "smtpUser": "",
+        "smtpPass": "",
+        "secure": false,
+        "tlsRejectUnauthorized": false,
+        "x": 1000,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    }
+]

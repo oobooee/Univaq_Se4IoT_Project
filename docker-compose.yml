@@ -1,0 +1,187 @@
+services:
+  mqtt:
+    container_name: my_se4iot_pr_mosquitto
+    restart: always
+    build: ./mqtt
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mqtt/config:/mosquitto/config
+      - ./mqtt/log:/mosquitto/log
+      - ./mqtt/data/:/mosquitto/data
+    networks:
+      - network
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 1883"]
+      interval: 5s
+      timeout: 10s
+      retries: 50
+
+
+  nodered:
+    container_name: my_se4iot_pr_nodered
+    build: ./nodered  
+    ports:
+      - "1880:1880"
+    env_file:
+      - .env  # Globale
+    volumes:
+    - ./nodered/nodered_data:/data 
+    depends_on:
+      influxdb:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+    networks:
+      - network
+
+  mysql:
+    container_name: my_se4iot_pr_mysql
+    build: ./mysql  
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/mysql_init/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 30
+
+  adminer:
+    container_name: my_se4iot_pr_mysql_adminer
+    build: ./adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - network
+
+  remote_hydro_dam_sensor:
+    container_name: my_se4iot_pr_remote_hydro_dam_sensor
+    restart: always
+    env_file:
+      - .env  # Globale
+    build: ./remote_hydro_dam_sensor
+    depends_on:
+      - influxdb
+      - mysql
+    networks:
+      - network
+
+  grafana:
+    container_name: my_se4iot_pr_grafana
+    restart: always
+    build: ./grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./grafana/data:/var/lib/grafana:rw
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+    networks:
+      - network
+    depends_on:
+      influxdb:
+        condition: service_healthy
+    ports:
+      - 3000:3000
+
+  rabbitmq:
+    container_name: my_se4iot_pr_rabbitmq
+    restart: always
+    build: ./rabbitmq
+    ports:
+      - "5672:5672"    
+      - "15672:15672" 
+    environment:
+      RABBITMQ_DEFAULT_USER: mg
+      RABBITMQ_DEFAULT_PASS: mg
+    volumes:
+      - ./rabbitmq/data:/var/lib/rabbitmq
+    networks:
+      - network
+    command: >
+      sh -c "
+      rabbitmq-plugins enable rabbitmq_management &&
+      rabbitmq-plugins enable rabbitmq_management_agent &&
+      rabbitmq-server"
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 60s
+      timeout: 30s
+      retries: 30
+
+  telegraf:
+    container_name: my_se4iot_pr_telegraf
+    build: ./telegraf
+    restart: always
+    env_file:
+      - .env  
+    depends_on:
+      influxdb:
+        condition: service_healthy
+    volumes:
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    networks:
+      - network
+  
+  telegraf_ha:
+    container_name: my_se4iot_pr_telegraf_HA
+    build: ./telegraf_ha
+    restart: always
+    env_file:
+      - .env  
+    depends_on:
+      influxdb:
+        condition: service_healthy
+    volumes:
+      - ./telegraf_ha/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    networks:
+      - network
+
+
+  influxdb:
+    container_name: my_se4iot_pr_influxdb
+    restart: always
+    build: ./influxdb
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=adminadmin    
+      - DOCKER_INFLUXDB_INIT_PASSWORD=adminadmin
+      - DOCKER_INFLUXDB_INIT_ORG=my_se4iot_project
+      - DOCKER_INFLUXDB_INIT_BUCKET=my_se4iot_project_bucket
+      - DOCKER_INFLUXDB_INIT_RETENTION=12h
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=aqqslSC85ktIxmXUaNhqwTqMPsVSZ4b_ziqBQ1DI_snQZkiRNSmtcmkgyy4tljz2q24YOX3D4fEFWKeNjKP5ZQ==
+    volumes:
+      - ./influxdb/data:/var/lib/influxdb2:rw
+      - ./influxdb/config:/etc/influxdb2
+    ports:
+       - 8086:8086
+    networks:
+      - network
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail http://localhost:8086/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 30
+
+volumes:
+  mysql_data:
+
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24

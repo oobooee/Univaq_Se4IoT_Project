@@ -1,0 +1,3 @@
+VHOST: /
+QUEUE: $env('DAM_FOLDER')
+INDEX: v2
